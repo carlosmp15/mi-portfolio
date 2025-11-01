@@ -1,0 +1,101 @@
+---
+---
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-sm">
+  <div class="max-w-6xl mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      {/* Logo */}
+      <a href="/" class="font-bold text-2xl text-indigo-600 dark:text-indigo-400 hover:scale-105 transition-transform">
+        Carlos M.P
+      </a>
+      
+      {/* Desktop Navigation */}
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#inicio" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium">
+          Inicio
+        </a>
+        <a href="#sobre-mi" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium">
+          Sobre Mí
+        </a>
+        <a href="#skills" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium">
+          Skills
+        </a>
+        <a href="#experiencia" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium">
+          Experiencia
+        </a>
+        <a href="#proyectos" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium">
+          Proyectos
+        </a>
+        <a href="#contacto" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all font-medium shadow-md hover:shadow-lg">
+          Contacto
+        </a>
+      </nav>
+      
+      {/* Mobile Menu Button */}
+      <button 
+        id="mobile-menu-button" 
+        class="md:hidden p-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400"
+        aria-label="Toggle menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+    
+    {/* Mobile Navigation */}
+    <nav id="mobile-menu" class="hidden md:hidden mt-4 pb-4 space-y-3">
+      <a href="#inicio" class="block text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium">
+        Inicio
+      </a>
+      <a href="#sobre-mi" class="block text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium">
+        Sobre Mí
+      </a>
+      <a href="#skills" class="block text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium">
+        Skills
+      </a>
+      <a href="#experiencia" class="block text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium">
+        Experiencia
+      </a>
+      <a href="#proyectos" class="block text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium">
+        Proyectos
+      </a>
+      <a href="#contacto" class="block px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-all font-medium text-center">
+        Contacto
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  mobileMenuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+  
+  // Close mobile menu when clicking on a link
+  const mobileLinks = mobileMenu?.querySelectorAll('a');
+  mobileLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+    });
+  });
+  
+  // Smooth scroll behavior
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (this: HTMLAnchorElement, e: Event) {
+      e.preventDefault();
+      const href = this.getAttribute('href') || '';
+      const target = document.querySelector(href);
+      if (target) {
+        const offset = 80; // Height of fixed header
+        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+</script>
