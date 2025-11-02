@@ -15,11 +15,11 @@ import { projects } from '../data/projects';
       {projects.map((project) => (
         <div class="group bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
           {/* Imagen del proyecto */}
-          <div class="relative h-48 bg-gradient-to-br from-indigo-500 to-purple-600 overflow-hidden">
+          <div class="relative h-40 bg-gradient-to-br from-indigo-500 to-purple-600 overflow-hidden flex items-center justify-center p-4">
             {project.image ? (
-              <img src={project.image} alt={project.title} class="w-full h-full object-cover" />
+              <img src={project.image} alt={project.title} class="max-h-28 w-auto object-contain" />
             ) : (
-              <div class="w-full h-full flex items-center justify-center text-white text-6xl font-bold opacity-30">
+              <div class="text-white text-6xl font-bold opacity-30">
                 {project.title.charAt(0)}
               </div>
             )}
